@@ -14,7 +14,9 @@ onMounted(() => {
 <template>
   <ul class="category-list">
     <li class="list-item" v-for="category in store.categories" :key="category.id">
-      <a href="/${item.alias}">{{ category.name }}</a>
+      <RouterLink :to="`/main/${category.alias}`" active-class="active-link">{{
+        category.name
+      }}</RouterLink>
     </li>
     <li>
       <ButtonIcon @click="store.createCategory">
@@ -45,6 +47,7 @@ onMounted(() => {
   transition: all 0.5s;
 }
 
+.list-item a.active-link,
 .list-item a:hover {
   font-size: 24px;
   font-weight: 700;

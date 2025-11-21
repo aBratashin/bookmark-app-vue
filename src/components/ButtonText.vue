@@ -1,30 +1,31 @@
 <script setup lang="ts">
-const { size = 32 } = defineProps<{ size?: number }>()
 </script>
 
 <template>
-  <button
-    class="button-icon"
-    :style="{ width: `${size}px`, height: `${size}px` }"
-  >
+  <button class="button">
     <slot />
   </button>
 </template>
 
 <style scoped>
-.button-icon {
+.button {
   display: flex;
   align-items: center;
   justify-content: center;
+  height: 50px;
+  padding: 12px 24px;
+
+  color: var(--color-bg);
+  font-size: 18px;
 
   background: var(--color-fg);
   border: none;
   outline: none;
-  border-radius: 50%;
+  border-radius: 50px;
   cursor: pointer;
 }
 
-.button-icon:hover {
+.button:hover {
   background: var(--color-fg-hover);
 }
 </style>
