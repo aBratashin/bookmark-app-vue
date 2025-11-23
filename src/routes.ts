@@ -1,4 +1,5 @@
 import { createRouter, createWebHistory } from 'vue-router'
+import { useAuthStore } from '@/stores/auth.store.ts'
 
 export const router = createRouter({
   routes: [
@@ -9,6 +10,7 @@ export const router = createRouter({
     },
     {
       path: '/',
+      name: 'auth',
       component: () => import('@/views/AuthView.vue'),
     },
     {
@@ -17,8 +19,8 @@ export const router = createRouter({
       children: [
         {
           path: '',
-          component: () => import('@/views/IndexView.vue'),
           name: 'main',
+          component: () => import('@/views/IndexView.vue'),
         },
         {
           path: ':alias',
@@ -28,4 +30,12 @@ export const router = createRouter({
     },
   ],
   history: createWebHistory(),
+})
+
+router.beforeEach((to) => {
+  const authStore = useAuthStore()
+
+  if (!authStore.getToken && to.name !== 'auth') {
+    return { name: 'auth' }
+  }
 })

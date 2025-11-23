@@ -4,19 +4,19 @@ import CategoryList from '@/components/CategoryList.vue'
 </script>
 
 <template>
-  <div class="main">
+  <div class="app">
     <nav class="nav">
       <ProfileAvatar />
       <CategoryList />
     </nav>
-    <main>
+    <main class="main">
       <RouterView />
     </main>
   </div>
 </template>
 
 <style scoped>
-.main {
+.app {
   display: flex;
   gap: 200px;
   min-height: calc(100vh - 140px);
@@ -26,5 +26,9 @@ import CategoryList from '@/components/CategoryList.vue'
 
 .nav {
   min-width: 320px;
+}
+
+.main {
+  width: 100%;
 }
 </style>
